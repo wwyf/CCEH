@@ -63,6 +63,14 @@ int main(int argc, char* argv[]){
 		printf("Fail Delete : %d\n",failDelete);
 
 	}
+    clock_gettime(CLOCK_MONOTONIC, &end);
+
+    long timediff = 1000000 * (end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec) / 1000;
+    printf("CCEH Test Duration: %ld us\n", timediff);
+    float total = (to - from) + 1;
+    float tf = timediff;
+    float ops = total / tf;
+    printf("CCEH Test OPS: %f \n", ops*1000000);
 	return 0;
 }
 
